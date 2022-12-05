@@ -11,9 +11,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         if let Ok(ln) = line {
             match ln.as_str().chars().nth(0).unwrap() {
                 'A' => match ln.as_str().chars().nth(2).unwrap() {
-                    'X' => score += 4,
-                    'Y' => score += 8,
-                    'Z' => score += 3,
+                    'X' => score += 3, // 4 for Part 1
+                    'Y' => score += 4, // 8 for Part 1
+                    'Z' => score += 8, // 3 for Part 1
                     _ => println!("Something went terribly wrong!"),
                 },
                 'B' => match ln.as_str().chars().nth(2).unwrap() {
@@ -23,9 +23,9 @@ fn main() -> Result<(), Box<dyn Error>> {
                     _ => println!("Something went terribly wrong!"),
                 },
                 'C' => match ln.as_str().chars().nth(2).unwrap() {
-                    'X' => score += 7,
-                    'Y' => score += 2,
-                    'Z' => score += 6,
+                    'X' => score += 2, // 7 for Part 1
+                    'Y' => score += 6, // 2 for Part 1
+                    'Z' => score += 7, // 6 for Part 1
                     _ => println!("Something went terribly wrong!"),
                 },
                 _ => println!("Something went terribly wrong!"),
