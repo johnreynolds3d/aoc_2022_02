@@ -5,34 +5,37 @@ use std::io::{BufRead, BufReader};
 fn main() -> Result<(), Box<dyn Error>> {
     let f = File::open("input.txt")?;
     let lines = BufReader::new(f).lines();
-    let mut score: u32 = 0;
 
-    for line in lines {
-        if let Ok(ln) = line {
-            match ln.as_str().chars().nth(0).unwrap() {
-                'A' => match ln.as_str().chars().nth(2).unwrap() {
-                    'X' => score += 3, // 4 for Part 1
-                    'Y' => score += 4, // 8 for Part 1
-                    'Z' => score += 8, // 3 for Part 1
-                    _ => println!("Something went terribly wrong!"),
+    let mut s = 0;
+
+    for l in lines {
+        if let Ok(l) = l {
+            let c1 = l.as_str().chars().nth(0).unwrap();
+            let c2 = l.as_str().chars().nth(2).unwrap();
+            match c1 {
+                'A' => match c2 {
+                    'X' => s += 3, // 4 for Part 1
+                    'Y' => s += 4, // 8 for Part 1
+                    'Z' => s += 8, // 3 for Part 1
+                    _ => println!("Error!"),
                 },
-                'B' => match ln.as_str().chars().nth(2).unwrap() {
-                    'X' => score += 1,
-                    'Y' => score += 5,
-                    'Z' => score += 9,
-                    _ => println!("Something went terribly wrong!"),
+                'B' => match c2 {
+                    'X' => s += 1,
+                    'Y' => s += 5,
+                    'Z' => s += 9,
+                    _ => println!("Error!"),
                 },
-                'C' => match ln.as_str().chars().nth(2).unwrap() {
-                    'X' => score += 2, // 7 for Part 1
-                    'Y' => score += 6, // 2 for Part 1
-                    'Z' => score += 7, // 6 for Part 1
-                    _ => println!("Something went terribly wrong!"),
+                'C' => match c2 {
+                    'X' => s += 2, // 7 for Part 1
+                    'Y' => s += 6, // 2 for Part 1
+                    'Z' => s += 7, // 6 for Part 1
+                    _ => println!("Error!"),
                 },
-                _ => println!("Something went terribly wrong!"),
+                _ => println!("Error!"),
             }
         }
     }
-    println!("Total score: {}", score);
+    println!("Total score: {}", s);
 
     Ok(())
 }
